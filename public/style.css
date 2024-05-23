@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
+    padding: 0%;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(to right, #96e671cd 70%, #93e56d77 30%);
+    position: relative;
+    overflow: hidden;
+}
+
+.main-text p {
+    line-height: 29px;
+    font-weight: 600;
+    font-size: large;
+}
+
+nav {
+    width: 90%;
+    margin: auto;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+}
+
+nav ul li{
+    margin: 0 5px;
+}
+
+nav ul a{
+    text-decoration: none;
+    padding: 0.3rem 1.3rem;
+    font-size: 17px;
+    font-weight: bold;
+    color: #305a00;
+    position: relative;
+    z-index: 1;
+}
+
+nav ul a::after{
+    content: "";
+    width: 0%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left:0px;
+    border-radius: 20px;
+    background-color: #4aa30f;
+    z-index: -1;
+    transition: 0.5s;
+}
+
+nav ul a:hover:after{
+    width: 100%;
+}
+
+.main-content {
+    width: 60%;
+    padding-top: 100px;
+    margin-left: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.image-pista ,.main-text{
+    flex-basis: 50%;
+}
+
+/* .image-pista img{
+    width: 380px;
+    height: 380px;
+} */
+.image-pista {
+    flex-basis: 50%; /* Vergroot de sectie */
+}
+
+.image-pista img {
+    width: 450px; /* Verhoog de breedte */
+    height: 450px; /* Verhoog de hoogte */
+    object-fit: cover; /* Zorg ervoor dat de afbeelding de container vult zonder vervorming */
+}
+
+.swiper {
+    width: 450px; /* Zorg ervoor dat de swiper container overeenkomt met de breedte van de afbeelding */
+    height: 450px; /* Zorg ervoor dat de swiper container overeenkomt met de hoogte van de afbeelding */
+}
+
+.swiper-slide img {
+    width: 100%; /* Laat de afbeelding de volledige breedte van de swiper-slide innemen */
+    height: 100%; /* Laat de afbeelding de volledige hoogte van de swiper-slide innemen */
+    object-fit: cover; /* Zorg ervoor dat de afbeelding de container vult zonder vervorming */
+}
+
+
+.swiper-button-prev, .swiper-button-next {
+    color: #494234; 
+    opacity: 0.7; 
+    transition: opacity 0.3s ease; 
+}
+
+.swiper-button-prev:hover, .swiper-button-next:hover {
+    opacity: 1;
+}
+
+.main-content h1 {
+    font-size: 60px;
+    letter-spacing: 1px;
+    color: #494234;
+}
+
+.main-content p{
+    margin-top: 10px;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+.main-content button{
+    margin-top: 2.5rem;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 9%;
+    background-color: #494234;
+    color: white;
+    cursor: pointer;
+}
+.main-content button:hover{
+    background-color: #4aa30f;    
+}
+
+.swiper{
+    width: 20rem;
+}
+
+.swiper-slide{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.right{
+    position: absolute;
+    right: 8%;
+    bottom: 11%;
+}
+
+.box{
+    display: flex;
+    align-items: center;
+}
+
+.right .box .image {
+    margin-top: 2rem;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    box-shadow: -5px 5px 17px rgba(0, 0, 0, 0.752);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+    overflow: hidden; /* Voorkom dat de afbeelding buiten de container valt */
+}
+
+.right .box .image img {
+    width: 100%; /* Laat de afbeelding de volledige breedte van de container innemen */
+    height: 100%; /* Laat de afbeelding de volledige hoogte van de container innemen */
+    object-fit: cover; /* Zorg ervoor dat de afbeelding de container vult zonder vervorming */
+    border-radius: 50%; /* Maak de afbeelding rond */
+}
+
+.box .inner-box{
+    margin: 1.5rem 0 0 1rem;
+}
+
+
+.box .inner-box p{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.social-links{
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+}
+
+.social-links::before{
+    content: "";
+    width: 80%;
+    height: 3px;
+    position: absolute;
+    top:42%;
+    left: -150px;
+    background-color: #494234;
+}
+
+.social-links i{
+    margin-left: 10px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #93C572;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+}
+
+.social-links i:hover{
+    transform: translateY(-5px);
+}
+.box .image:hover{
+    transform: translateY(-15px);
+    
+}
+
+nav ul a:hover::after {
+    width: 100%;
+}
+.logo {
+    height: 150px; /* Pas de hoogte van het logo aan zoals gewenst */
+    width: 150px; /* Houd de breedte proportioneel */
+    border-radius: 50%;
+    position: absolute;
+    right: 3rem;
+    top: 1rem;
+
+    
+    transition: 0.3s ease-in-out; /* Voeg een kleine overgang toe voor een mooie verschijning */
+}
+.logo:hover {
+    transform: scale(1.1); /* Vergroot het logo een beetje bij hover voor een mooi effect */
+} 
+#emailInput {
+    width: 250px; /* Of pas de breedte aan zoals gewenst */
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px; /* Voeg wat ruimte toe tussen de invoervelden */
+  }
+  

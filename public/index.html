@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Volunteer Connect</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" 
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Over Ons</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <img src="logo.jpeg" alt="Green Volunteer Connect" class="logo">
+
+        <div class="main-content">
+            <div class="image-pista">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="img1.jpeg" alt="Beloningsprogramma"></div>
+                        <div class="swiper-slide"><img src="img2.jpeg" alt="Virtuele Mogelijkheden"></div>
+                        <div class="swiper-slide"><img src="img3.jpeg" alt="Duurzaam Reizen"></div>
+                        <div class="swiper-slide"><img src="img4.jpeg" alt="Duurzaam Reizen"></div>
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+            <div class="main-text">
+                <h1>Green Volunteer Connect</h1>
+                <p> Ons platform is dé plek waar vrijwilligers en organisaties samenkomen. We geloven in het versterken van individuele identiteiten en het opbouwen van waardevolle banden tussen vrijwilligers en organisaties. Door motivatie te maximaliseren, streven we ernaar het volledige potentieel van vrijwilligerswerk te benutten. Doe mee en ontdek hoe je een positieve impact kunt maken!</p>
+                <form id="signupForm">
+                    <input type="email" id="emailInput" placeholder="E-mailadres" required>
+                    <button type="submit">Meld je aan</button>
+                </form>
+                <p id="signupCount">Aantal geregistreerde gebruikers: 55</p> 
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="box">
+                <div class="image">
+                    <img src="img5.jpeg" alt="Beloningsprogramma">
+                </div>
+                <div class="inner-box">
+                    <h3>Beloningsprogramma</h3>
+                    <p>Verdien punten en ontvang kortingen bij lokale bedrijven voor jouw inzet.</p>
+                </div>
+            </div>
+            <div class="box">
+                <div class="image">
+                    <img src="img6.jpeg" alt="Virtuele Mogelijkheden">
+                </div>
+                <div class="inner-box">
+                    <h3>Virtuele Mogelijkheden</h3>
+                    <p>Doe vrijwilligerswerk vanuit huis met onze flexibele online opties.</p>
+                </div>
+            </div>
+            <div class="box">
+                <div class="image">
+                    <img src="img7.jpeg" alt="Duurzaam Reizen">
+                </div>
+                <div class="inner-box">
+                    <h3>Duurzaam Reizen</h3>
+                    <p>Kies voor groene transportopties en krijg beloningen voor milieuvriendelijk reizen.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="social-links">
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="far fa-envelope"></i>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+
+        const signupForm = document.getElementById('signupForm');
+        const emailInput = document.getElementById('emailInput');
+        const signupCount = document.getElementById('signupCount');
+        let registrationCount = 55; 
+
+        signupForm.addEventListener('submit', (event) => {
+            event.preventDefault(); 
+            const email = emailInput.value;
+
+            fetch('/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    registrationCount++;
+                    signupCount.textContent = `Aantal geregistreerde gebruikers: ${registrationCount}`;
+                    emailInput.value = ''; 
+                } else {
+                    alert('Er is iets misgegaan. Probeer het opnieuw.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
