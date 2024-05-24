@@ -6,9 +6,9 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const SENDGRID_API_KEY = "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";
+//const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
 
-sgMail.setApiKey(SENDGRID_API_KEY);
+sgMail.setApiKey('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');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -22,13 +22,33 @@ app.post('/signup', (req, res) => {
         to: email,
         from: 'almousa.najib@gmail.com', 
         subject: 'Dank u voor je aanmelding',
-        text: 'Hartelijk dank voor uw aanmelding bij The Green Volunteer Connect! Dit project is momenteel onderdeel van onze opleiding, maar we zijn vastbesloten om het verder te ontwikkelen en hopen u in de toekomst meer te kunnen bieden.' +
-
-        'We waarderen uw interesse in ons initiatief en houden u graag op de hoogte van onze vorderingen.' +
-        
-        'Met vriendelijke groeten,' +
-        
-        'Het team van The Green Volunteer Connect'
+        html: `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <style>
+            body { font-family: sans-serif; }
+            .container {
+              max-width: 600px;
+              margin: 0 auto;
+              padding: 20px;
+              border: 1px solid #eee;
+              border-radius: 5px;
+            }
+            h1 { color: #008000; } /* Green for The Green Volunteer Connect */
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <h1>Hartelijk dank voor uw aanmelding!</h1>
+            <p>Hartelijk dank voor uw aanmelding bij The Green Volunteer Connect! Dit project is momenteel onderdeel van onze opleiding op school.</p>
+            <p>We waarderen uw interesse in ons initiatief en houden u graag op de hoogte van onze vorderingen.</p>
+            <p>Met vriendelijke groeten,</p>
+            <p>Het team van The Green Volunteer Connect</p>
+          </div>
+        </body>
+        </html>
+      `
     };
 
     sgMail
