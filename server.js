@@ -6,9 +6,9 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-//const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
+const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY2;
 
-sgMail.setApiKey('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');
+sgMail.setApiKey(SENDGRID_API_KEY);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
