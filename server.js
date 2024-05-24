@@ -2,21 +2,23 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const sgMail = require('@sendgrid/mail');
 const path = require('path');
-require('dotenv').config();
+require('dotenv').config(); 
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY2;
+//const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY2;
 
-sgMail.setApiKey(SENDGRID_API_KEY);
+sgMail.setApiKey('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');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.post('/signup', (req, res) => {
     const email = req.body.email;
     console.log(email);
+    //console.log(SENDGRID_API_KEY);
 
     const msg = {
         to: email,
