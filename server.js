@@ -8,7 +8,6 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 //const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY2;
 
-console.log(process.env.SENDGRID_API_KEY); 
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
