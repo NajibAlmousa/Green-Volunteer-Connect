@@ -1,14 +1,16 @@
+require('dotenv').config(); 
 const express = require('express');
 const bodyParser = require('body-parser');
 const sgMail = require('@sendgrid/mail');
 const path = require('path');
-require('dotenv').config(); 
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 //const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY2;
 
-sgMail.setApiKey('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');
+console.log(process.env.SENDGRID_API_KEY); 
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
